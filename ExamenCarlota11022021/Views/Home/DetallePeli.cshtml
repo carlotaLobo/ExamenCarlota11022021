@@ -6,13 +6,20 @@
 <h1>DetallePeli</h1>
 
 <div class="card">
-    <img src="@Model.Foto" />
-
+    <img src="~/images/@Model.Foto" style="width:150px" />
     <div class="card-body">
         <h2>@Model.Titulo</h2>
         
         <h5>@Model.Actores </h5>
         <p>@Model.Argumento</p>
+    </div>
+    <div class="card-footer">
+        <a asp-action="Guardarcesta" asp-controller="Home" asp-route-id="@Model.Id">
+            Comprar
+        </a>
+        <a asp-action="Index" asp-controller="Home">
+            Volver
+        </a>
     </div>
 
 </div>

@@ -33,7 +33,7 @@
                 <li class="nav-item">
                     <a class="nav-link disabled" href="#">Disabled</a>
                 </li>
-                @await Component.InvokeAsync("MenuGeneros")
+               
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ejemplos</a>
@@ -56,7 +56,14 @@
         <!-- Main jumbotron for a primary marketing message or call to action -->
         <div class="jumbotron">
             <div class="container">
-                @RenderBody()
+                <div class="row d-flex flex-row">
+                    <div class="col">
+                    @await Component.InvokeAsync("MenuGeneros")
+                    </div>
+                    <div class="col">@RenderBody()</div>
+                    
+                </div>
+                
             </div>
         </div>
 

@@ -1,15 +1,42 @@
 ﻿@model List<Genero>
+@{ 
+    //List<Cesta> cestita = Context.Session.GetObject<List<Cesta>>("CESTA");
+  
 
-<li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdown02" aria-haspopup="true" aria-expanded="false">Generos</a>
-    <div class="dropdown-menu" aria-labelledby="dropdown02">
-        @foreach (Genero d in Model)
-        {
-            <a class="dropdown-item"
-               asp-controller="Home"
-               asp-action="ListarPelisGenero" asp-route-id="@d.Id">
-                @d.Generos
-            </a>
-        }
-    </div>
-</li>
+}
+<div class="col">
+    <h3>Generos</h3>
+    @foreach (Genero d in Model)
+    {
+        <a class="dropdown-item"
+           asp-controller="Home"
+           asp-action="ListarPelisGenero" asp-route-id="@d.Id">
+            @d.Generos
+        </a>
+    }
+
+</div>
+
+<div class="col">
+    <h3>Compras</h3>
+
+    @*@if (cestita != null)
+    {
+
+        <ul class="list-group">
+
+            <li class="list-group-item">Compras: @cestita.AsEnumerable().Count() </li>
+
+        </ul>
+    }*@
+
+
+
+</div>
+<div>
+    <a class="dropdown-item"
+       asp-controller="Home"
+       asp-action="vercesta" >
+        ver cesta
+    </a>
+</div>

@@ -1,0 +1,20 @@
+﻿@{
+
+    List<Cesta> cestita = Context.Session.GetObject<List<Cesta>>("CESTA");
+
+}
+
+<h1>VerCesta</h1>
+<form method="post">
+    <ul class="list-group">
+        @if (cestita != null)
+        {
+            @foreach (Cesta c in cestita)
+            {
+                <li class="list-group-item"> Producto: @c.IdPelicula </li>
+            }
+        }
+        
+    </ul>
+    @*<button type="submit" class="btn btn-success">Guardar</button>*@
+</form>

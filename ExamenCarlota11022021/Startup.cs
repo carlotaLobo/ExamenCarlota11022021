@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ExamenCarlota11022021.Data;
+using ExamenCarlota11022021.Helpers;
 using ExamenCarlota11022021.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -26,10 +27,11 @@ namespace MvcCore
         public void ConfigureServices(IServiceCollection services)
         {
             String cadena = this.configuration.GetConnectionString("sql");
-            services.AddSession(options=>
-            {
-                options.IdleTimeout = TimeSpan.FromMinutes(15);
-            } );
+            services.AddDistributedMemoryCache();
+            services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromMinutes(10);
+            });
+            services.AddSingleton<PathProvider>();
             services.AddDbContext<Context>(options=> options.UseSqlServer(cadena));
             services.AddTransient<IRepository, Repository>();
             services.AddControllersWithViews();
