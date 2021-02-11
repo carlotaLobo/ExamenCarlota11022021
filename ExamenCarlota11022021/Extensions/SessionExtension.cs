@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace ExamenCarlota11022021.Extensions
 {
     public static class SessionExtension
@@ -18,7 +19,7 @@ namespace ExamenCarlota11022021.Extensions
         public static T GetObject<T>(this ISession session, String key)
         {
             String data = session.GetString(key);
-            if (data != null)
+            if (data == null)
             {
                 return default(T);
             }

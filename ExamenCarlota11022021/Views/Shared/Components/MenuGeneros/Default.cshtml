@@ -1,7 +1,15 @@
 ﻿@model List<Genero>
-@{ 
-    //List<Cesta> cestita = Context.Session.GetObject<List<Cesta>>("CESTA");
-  
+@{
+    List<Cesta> cestita = Context.Session.GetObject<List<Cesta>>("CESTA");
+    int cantidad = 0;
+    if (cestita != null)
+    {
+        @foreach (Cesta c in cestita)
+        {
+            cantidad += c.Precio;
+        }
+    }
+
 
 }
 <div class="col">
@@ -18,25 +26,25 @@
 </div>
 
 <div class="col">
-    <h3>Compras</h3>
+    <h3 style="color:rebeccapurple">Compras</h3>
 
-    @*@if (cestita != null)
+    @if (cestita != null)
     {
 
         <ul class="list-group">
 
-            <li class="list-group-item">Compras: @cestita.AsEnumerable().Count() </li>
+            <li class="list-group-item">Compras: @cestita.AsEnumerable().Count()  </li>
 
         </ul>
-    }*@
+    }
 
-
+    <h5 style="color:cornflowerblue">Total: @cantidad</h5>
 
 </div>
 <div>
     <a class="dropdown-item"
        asp-controller="Home"
-       asp-action="vercesta" >
+       asp-action="vercesta">
         ver cesta
     </a>
 </div>

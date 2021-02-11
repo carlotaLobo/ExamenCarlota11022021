@@ -24,7 +24,7 @@ namespace ExamenCarlota11022021.Controllers
         {
             session.SetString("algo", "algo");
 
-            session.SetObject("CESTA", new List<Cesta>());
+            //session.SetObject("CESTA", new List<Cesta>());
 
             String text = session.GetString("algo");
 
@@ -77,6 +77,25 @@ namespace ExamenCarlota11022021.Controllers
         public IActionResult VerCesta()
         {
             return View();
+        }
+        public IActionResult EliminarPeli(int id)
+        {
+            List<Cesta> listacesta = session.GetObject<List<Cesta>>("CESTA");
+
+            List<Cesta> cestita = new List<Cesta>();
+
+            foreach (Cesta c in listacesta)
+            {
+             if(c.IdPelicula != id)
+                {
+                    Cesta cesta = new Cesta();
+                    cesta.IdPelicula = c.IdPelicula;
+                    cesta.Precio = c.Precio;
+                    cestita.Add(cesta);
+                }
+            }
+            session.SetObject("CESTA", cestita);
+            return RedirectToAction("vercesta");
         }
         [HttpPost]
         public IActionResult VerCesta(int[] id)

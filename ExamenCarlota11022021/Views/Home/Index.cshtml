@@ -1,7 +1,5 @@
 ﻿@model List<Pelicula>
 
-
-
 <h1>ListarPelis</h1>
 
 <table>
@@ -19,8 +17,10 @@
             <tr>
                 <td>@p.Titulo</td>
                 <td>@p.Precio</td>
-                <td>@p.Foto</td>
-                <td> <a asp-action="DetallePeli" asp-controller="Home" asp-route-id="@p.Id">Ver Detalles</a> </td>
+                <td>
+                    <img src="~/images/@p.Foto" style="width:150px;" />
+                </td>
+                <td> <a class="btn btn-info" asp-action="DetallePeli" asp-controller="Home" asp-route-id="@p.Id">Ver Detalles</a> </td>
             </tr>
         }
 

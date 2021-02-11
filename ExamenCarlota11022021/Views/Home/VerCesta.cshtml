@@ -11,10 +11,10 @@
         {
             @foreach (Cesta c in cestita)
             {
-                <li class="list-group-item"> Producto: @c.IdPelicula </li>
+                <li class="list-group-item"> Producto: @c.IdPelicula  <a asp-controller="Home" asp-action="EliminarPeli" asp-route-id="@c.IdPelicula">eliminar</a>   </li>
             }
         }
         
     </ul>
-    @*<button type="submit" class="btn btn-success">Guardar</button>*@
+    <button type="submit" class="btn btn-success">comprar</button>
 </form>
