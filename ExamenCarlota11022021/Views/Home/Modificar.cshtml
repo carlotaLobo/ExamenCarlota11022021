@@ -1,0 +1,9 @@
+﻿@model Pelicula
+
+<form method="post" enctype="multipart/form-data">
+    <label>Precio</label>
+    <input value="@Model.Precio" name="precio" type="text" />
+    <label>Imagen</label>
+    <input name="foto" type="file" />
+    <button type="submit">modificar</button>
+</form>

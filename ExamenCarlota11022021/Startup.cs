@@ -31,6 +31,8 @@ namespace ExamenCarlota11022021
             services.AddSession(options => {
                 options.IdleTimeout = TimeSpan.FromMinutes(10);
             });
+            services.AddSingleton<UploadService>();
+
             services.AddSingleton<PathProvider>();
             services.AddDbContext<Context>(options=> options.UseSqlServer(cadena));
             services.AddTransient<IRepository, Repository>();

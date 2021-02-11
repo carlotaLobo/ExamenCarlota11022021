@@ -49,5 +49,15 @@ namespace ExamenCarlota11022021.Repositories
         {
             throw new NotImplementedException();
         }
+
+        public Pelicula Update(Pelicula peli)
+        {
+            Pelicula pelicula= this.context.Pelicula.Update(peli).Entity;
+            
+            this.context.SaveChanges();
+            return pelicula;
+
+
+                }
     }
 }

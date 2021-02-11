@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using ExamenCarlota11022021.Extensions;
+using ExamenCarlota11022021.Helpers;
 using ExamenCarlota11022021.Models;
 using ExamenCarlota11022021.Repositories;
 using Microsoft.AspNetCore.Http;
@@ -15,9 +16,11 @@ namespace ExamenCarlota11022021.Controllers
     {
         IRepository repo;
         ISession session => HttpContext.Session;
-        public HomeController(IRepository repo)
+        UploadService uploadService;
+        public HomeController(IRepository repo, UploadService uploadService)
         {
             this.repo = repo;
+            this.uploadService = uploadService;
         }
 
         public IActionResult Index()
@@ -122,6 +125,26 @@ namespace ExamenCarlota11022021.Controllers
             session.SetObject("CESTA", cestita);
 
             return View();
+        }
+
+        public IActionResult Modificar(int id)
+        {
+            return View(this.repo.FindPeliById(id));
+        }
+        [HttpPost]
+        public async Task<IActionResult> Modificar(Pelicula pelicula, IFormFile foto)
+        {           
+            Pelicula peli= this.repo.FindPeliById(pelicula.Id);
+
+            if(foto != null)
+            {
+               await this.uploadService.UploadFileAsync(foto, Folders.Images);
+                peli.Foto = foto.FileName;
+            }
+            peli.Precio = pelicula.Precio;
+            this.repo.Update(peli);
+
+            return RedirectToAction("detallepeli", peli);
         }
     }
 }

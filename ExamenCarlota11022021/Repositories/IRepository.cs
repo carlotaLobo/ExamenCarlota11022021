@@ -19,7 +19,7 @@ namespace ExamenCarlota11022021.Repositories
         Pelicula FindPeliById(int id);
         List<Pelicula> FindPeliByGenero(int idgenero);
 
-
+        Pelicula Update(Pelicula peli);
 
 
     }
