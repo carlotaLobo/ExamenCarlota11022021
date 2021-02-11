@@ -14,12 +14,12 @@
     <tbody>
         @foreach (Pelicula p in Model)
         {
-            <tr>
-                <td>@p.Titulo</td>
-                <td>@p.Precio</td>
-                <td>@p.Foto</td>
-                <td> <a asp-action="DetallePeli" asp-controller="Home" asp-route-id="@p.Id">Ver Detalles</a> </td>
-            </tr>
+        <tr>
+            <td>@p.Titulo</td>
+            <td>@p.Precio</td>
+            <td>@p.Foto</td>
+            <td> <a asp-action="DetallePeli" asp-controller="Home" asp-route-id="@p.Id">Ver Detalles</a> </td>
+        </tr>
         }
 
     </tbody>

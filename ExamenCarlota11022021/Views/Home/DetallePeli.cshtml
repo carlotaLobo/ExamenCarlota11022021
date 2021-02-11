@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewData["Title"] = "DetallePeli";
+}
+@model Pelicula
+<h1>DetallePeli</h1>
+
+<div class="card">
+    <img src="@Model.Foto" />
+
+    <div class="card-body">
+        <h2>@Model.Titulo</h2>
+        
+        <h5>@Model.Actores </h5>
+        <p>@Model.Argumento</p>
+    </div>
+
+</div>
+
