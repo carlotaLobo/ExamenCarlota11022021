@@ -100,29 +100,34 @@ namespace ExamenCarlota11022021.Controllers
             session.SetObject("CESTA", cestita);
             return RedirectToAction("vercesta");
         }
-        [HttpPost]
-        public IActionResult VerCesta(int[] id)
+        //[HttpPost]
+        //public IActionResult VerCesta(int[] id)
+        //{
+        //    List<Cesta> listacesta = session.GetObject<List<Cesta>>("CESTA");
+        //    List<Cesta> cestita = new List<Cesta>();
+        //    Cesta cestanueva;
+
+        //    if (listacesta != null)
+        //    {
+        //        foreach (Cesta c in listacesta)
+        //        {
+        //            for (int i = 0; i < id.Length; i++)
+        //            {
+        //                if (c.IdPelicula == id[i])
+        //                {
+        //                    cestanueva = new Cesta(c.IdPelicula, c.Precio);
+        //                    cestita.Add(cestanueva);
+        //                }
+        //            }
+        //        }
+        //    }
+
+        //    session.SetObject("CESTA", cestita);
+
+        //    return View();
+        //}
+        public IActionResult Comprar()
         {
-            List<Cesta> listacesta = session.GetObject<List<Cesta>>("CESTA");
-            List<Cesta> cestita = new List<Cesta>();
-            Cesta cestanueva;
-
-            if (listacesta != null)
-            {
-                foreach (Cesta c in listacesta)
-                {
-                    for (int i = 0; i < id.Length; i++)
-                    {
-                        if (c.IdPelicula == id[i])
-                        {
-                            cestanueva = new Cesta(c.IdPelicula, c.Precio);
-                            cestita.Add(cestanueva);
-                        }
-                    }
-                }
-            }
-
-            session.SetObject("CESTA", cestita);
 
             return View();
         }

@@ -1,0 +1,31 @@
+﻿@{
+
+    List<Cesta> cestita = Context.Session.GetObject<List<Cesta>>("CESTA");
+    int cantidad = 0;
+    if (cestita != null)
+    {
+        @foreach (Cesta c in cestita)
+        {
+            cantidad += c.Precio;
+        }
+    }
+
+}
+
+
+<h1>TU COMPRA</h1>
+
+<ul class="list-group">
+    @if (cestita != null)
+    {
+        @foreach (Cesta c in cestita)
+        {
+            <li class="list-group-item">
+                Producto: @c.IdPelicula
+            </li>
+        }
+    }
+
+    
+</ul>
+<h5 style="color:cornflowerblue">Total: @cantidad €</h5>
